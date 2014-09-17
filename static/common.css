@@ -1,0 +1,36 @@
+body {
+    background-attachment: fixed;
+    background-color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;
+}
+
+.navbar {
+    border-radius: 0px;
+}
+
+.navbar-player {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.navbar-nav {
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+    float: none;
+}
+
+.navbar-nav>li>a {
+    color: #fff;
+    text-align: center;
+}
+
+.navbar-player .navbar-nav>li>a:hover, .navbar-player .navbar-nav>li>a:focus {
+    color: #fff;
+    background-color: rgba(200,200,200,.2);
+}
+
+a {
+    content: #fff;
+}

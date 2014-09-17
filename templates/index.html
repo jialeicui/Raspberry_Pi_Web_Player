@@ -3,20 +3,31 @@ $def with (ll)
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>树莓派播放器</title>
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/common.css">
 </head>
 <body>
+    <nav class="navbar navbar-player" role="navigation">
+            <ul class="nav navbar-nav">
+                <li><a href="/">歌曲</a></li>
+                <li><a href="#">播放列表</a></li>
+                <li><a href="#">关于</a></li>
+            </ul>
+    </nav>
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <div class="container">
-        <table class="table table-striped">
-        $for col in ll:
-            $if col['playable']:
-                <button type="button" class="btn btn-success btn-lg btn-block" onclick="javascript:play('$col['href']')">$col['name']</button>
-            $else:
-                <tr class="success"><td><a href="$col['href']">$col['name']</a></td></td>
-        </table>
+        <div class="col-lg-8 col-lg-push-2">
+
+            <table class="table table-striped">
+            $for col in ll:
+                $if col['playable']:
+                    <button type="button" class="btn btn-default btn-block" onclick="javascript:play('$col['href']')">$col['name']</button>
+                $else:
+                    <tr class="success"><td><a href="$col['href']">$col['name']</a></td></td>
+            </table>
+        </div>
     </div>
 </body>
 
