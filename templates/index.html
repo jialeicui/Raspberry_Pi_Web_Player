@@ -23,9 +23,10 @@ $def with (ll)
             <table class="table table-striped">
             $for col in ll:
                 $if col['playable']:
-                    <button type="button" class="btn btn-default btn-block" onclick="javascript:play('$col['href']')">$col['name']</button>
+                    <button type="button" class="btn btn-success btn-block" onclick="javascript:play('$col['href']')">$col['name']</button>
                 $else:
-                    <tr class="success"><td><a href="$col['href']">$col['name']</a></td></td>
+                    <button type="button" class="btn btn-default btn-block" onclick="window.location.href='$col['href']';">$col['name']</button>
+                    <!-- <tr class="success"><td><a href="$col['href']">$col['name']</a></td></td> -->
             </table>
         </div>
     </div>
