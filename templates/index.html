@@ -1,4 +1,31 @@
 $def with (ll)
-$for col in ll:
-    <li><a href="$col['href']">$col['name']</a></li>
-    
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body>
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <div class="container">
+        <table class="table table-striped">
+        $for col in ll:
+            $if col['playable']:
+                <button type="button" class="btn btn-success btn-lg btn-block" onclick="javascript:play('$col['href']')">$col['name']</button>
+            $else:
+                <tr class="success"><td><a href="$col['href']">$col['name']</a></td></td>
+        </table>
+    </div>
+</body>
+
+<script type="text/javascript">
+    function play(href)
+    {
+        jQuery.get( href, function( data ) {
+        });
+    }
+</script>
+</html>
+
