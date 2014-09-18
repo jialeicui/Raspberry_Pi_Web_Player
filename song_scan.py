@@ -6,10 +6,10 @@ def get(base_dir, opt_dir = ''):
     if os.path.isfile(final_dir):
         return  play(final_dir)
     for dirs in os.listdir(final_dir):
-        if not dirs.startswith('.') and _is_audio_file(dirs):
+        if not dirs.startswith('.'):
             if os.path.isdir(os.path.join(final_dir, dirs)):
                 ret.append({'name':dirs, 'href':'/ls/' + os.path.join(opt_dir, dirs), 'playable':False})
-            else:
+            elif _is_audio_file(dirs):
                 ret.append({'name':dirs, 'href':'/play/' + os.path.join(opt_dir, dirs), 'playable':True})
     return ret
     pass
