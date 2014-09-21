@@ -2,6 +2,7 @@ import web
 import song_scan
 import os
 import subprocess
+import netease
 
 render = web.template.render('templates/')
 base_dir = '/Users/jialeicui/Music'
@@ -11,6 +12,8 @@ urls = (
     '/', 'index',
     '/ls/(.*)', 'index',
     '/play/(.*)', 'play',
+    '/playurl/(.*)', 'playurl',
+    '/net', netease.app_netease,
 )
 
 class index:
@@ -24,7 +27,19 @@ class play:
         # return os.path.join(base_dir, opt_dir)
         if mp:
             mp.terminate()
+            os.system('killall mplayer')
         globals()['mplayer_sub'] = subprocess.Popen('mplayer "' + os.path.join(base_dir, opt_dir) + '"', shell=True)
+        return ''
+
+class playurl:
+    def GET(self, url = ''):
+        url = 'http://' + url
+        mp = globals()['mplayer_sub']
+        # return os.path.join(base_dir, opt_dir)
+        if mp:
+            mp.terminate()
+            os.system('killall mplayer')
+        globals()['mplayer_sub'] = subprocess.Popen('mplayer ' + url, shell=True)
         return ''
 
 if __name__ == "__main__": 

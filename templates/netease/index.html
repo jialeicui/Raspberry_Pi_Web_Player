@@ -1,17 +1,17 @@
-$def with (ll)
+$def with (result)
 <html lang="zh-cn">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>树莓派播放器</title>
+    <title>树莓派-云音乐</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/common.css">
 </head>
 <body>
     <nav class="navbar navbar-player" role="navigation">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">歌曲</a></li>
-                <li><a href="/net">网易云音乐</a></li>
+                <li><a href="/">歌曲</a></li>
+                <li class="active"><a href="/net">网易云音乐</a></li>
                 <li><a href="#">关于</a></li>
             </ul>
     </nav>
@@ -19,15 +19,13 @@ $def with (ll)
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
     <div class="container">
         <div class="col-lg-8 col-lg-push-2">
+            <form class="form-inline" role="form" action="/net/search" method="post">
+                <input type="text" class="form-control" name="keyword" id="keyword" placeholder="输入歌曲名或者拼音">
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
 
-            <table class="table table-striped">
-            $for col in ll:
-                $if col['playable']:
-                    <button type="button" class="btn btn-success btn-block" onclick="javascript:play('$col['href']')">$col['name']</button>
-                $else:
-                    <button type="button" class="btn btn-default btn-block" onclick="window.location.href='$col['href']';">$col['name']</button>
-                    <!-- <tr class="success"><td><a href="$col['href']">$col['name']</a></td></td> -->
-            </table>
+            $for col in result:
+                <button type="button" class="btn btn-success btn-block" onclick="javascript:play('$col['href']')">$col['name']</button>
         </div>
     </div>
 </body>
