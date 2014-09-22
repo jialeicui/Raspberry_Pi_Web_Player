@@ -1,3 +1,5 @@
+# -*- coding:utf8 -*-
+
 import web
 import song_scan
 import os
