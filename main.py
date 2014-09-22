@@ -25,12 +25,8 @@ class index:
 
 class play:
     def GET(self, opt_dir = ''):
-        mp = globals()['mplayer_sub']
-        # return os.path.join(base_dir, opt_dir)
-        if mp:
-            mp.terminate()
-            os.system('killall mplayer')
-        globals()['mplayer_sub'] = subprocess.Popen('mplayer "' + os.path.join(base_dir, opt_dir) + '"', shell=True)
+        os.system('killall mplayer')
+        subprocess.Popen('mplayer "' + os.path.join(base_dir, opt_dir) + '"', shell=True)
         return ''
 
 class playurl:

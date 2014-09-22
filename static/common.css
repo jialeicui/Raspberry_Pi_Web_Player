@@ -28,9 +28,32 @@ body {
 
 .navbar-player .navbar-nav>li>a:hover, .navbar-player .navbar-nav>li>a:focus {
     color: #fff;
-    background-color: rgba(200,200,200,.2);
+    background-color: #428bca;
 }
 
-a {
-    content: #fff;
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    background-color: #555;
 }
+
+.btn-group>.btn:first-child {
+    width: 80%;
+}
+
+.btn-group {
+    margin-top: 2px;
+    width: 100%;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.row {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.btn {
+    font-size: 14px;
+}
+

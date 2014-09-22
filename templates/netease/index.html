@@ -8,24 +8,32 @@ $def with (result)
     <link rel="stylesheet" type="text/css" href="/static/common.css">
 </head>
 <body>
-    <nav class="navbar navbar-player" role="navigation">
-            <ul class="nav navbar-nav">
-                <li><a href="/">歌曲</a></li>
-                <li class="active"><a href="/net">网易云音乐</a></li>
-                <li><a href="#">关于</a></li>
-            </ul>
+    <nav class="navbar navbar-player">
+        <ul class="nav navbar-nav nav-pills">
+            <li><a href="/">歌曲</a></li>
+            <li class="active"><a href="/net">网易云音乐</a></li>
+            <li><a href="#">关于</a></li>
+        </ul>
     </nav>
     <script src="/static/jquery.min.js"></script>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
     <div class="container">
-        <div class="col-lg-8 col-lg-push-2">
+        <div class="row">
             <form class="form-inline" role="form" action="/net/search" method="post">
-                <input type="text" class="form-control" name="keyword" id="keyword" placeholder="输入歌曲名或者拼音">
-                <button type="submit" class="btn btn-default">搜索</button>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="keyword" id="keyword" placeholder="输入歌曲名或者拼音">
+                    <!-- <button type="submit" class="btn btn-default">搜索</button> -->
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Go</button>
+                    </span>
+                </div>
             </form>
 
             $for col in result:
-                <button type="button" class="btn btn-info btn-block" onclick="javascript:play('$col['href']')">$col['name']</button>
+                <div class="btn-group">
+                <button type="button" class="btn btn-info" onclick="javascript:play('$col['href']')">$col['name']</button>
+                <button type="button" class="btn btn-default btn-danger btn_add">&nbsp;<span class="glyphicon glyphicon-plus"></span>&nbsp;</button>
+                </div>
         </div>
     </div>
 </body>

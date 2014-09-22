@@ -8,28 +8,33 @@ $def with (ll)
     <link rel="stylesheet" type="text/css" href="/static/common.css">
 </head>
 <body>
-    <nav class="navbar navbar-player" role="navigation">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/">歌曲</a></li>
-                <li><a href="/net">网易云音乐</a></li>
-                <li><a href="#">关于</a></li>
-            </ul>
+    <nav class="navbar navbar-player">
+        <ul class="nav navbar-nav nav-pills">
+            <li class="active" role="presentation"><a href="/">歌曲</a></li>
+            <li><a href="/net">网易云音乐</a></li>
+            <li><a href="#">关于</a></li>
+        </ul>
     </nav>
     <script src="/static/jquery.min.js"></script>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
     <div class="container">
-        <div class="col-lg-8 col-lg-push-2">
-
-            <table class="table table-striped">
+        <div class="row">
+        <!-- <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4"> -->
             $for col in ll:
                 $if col['playable']:
-                    <button type="button" class="btn btn-success btn-block" onclick="javascript:play('$col['href']')">$col['name']</button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success" onclick="javascript:play('$col['href']')">$col['name']</button>
+                        <button type="button" class="btn btn-default btn-danger btn_add">&nbsp;<span class="glyphicon glyphicon-plus"></span>&nbsp;</button>
+                    </div>
                 $else:
-                    <button type="button" class="btn btn-default btn-block" onclick="window.location.href='$col['href']';">$col['name']</button>
-                    <!-- <tr class="success"><td><a href="$col['href']">$col['name']</a></td></td> -->
-            </table>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default" onclick="window.location.href='$col['href']';">$col['name']</button>
+                        <button type="button" class="btn btn-default btn-danger btn_add">&nbsp;<span class="glyphicon glyphicon-plus"></span>&nbsp;</button>
+                    </div>
+        <!-- </div> -->
         </div>
     </div>
+    <br/>
 </body>
 
 <script type="text/javascript">
