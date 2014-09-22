@@ -9,9 +9,9 @@ def get(base_dir, opt_dir = ''):
     for dirs in os.listdir(final_dir):
         if not dirs.startswith('.'):
             if os.path.isdir(os.path.join(final_dir, dirs)):
-                folders.append({'name':dirs, 'href':'/ls/' + os.path.join(opt_dir, dirs), 'playable':False})
+                folders.append({'name':dirs, 'href':'/ls/' + os.path.join(opt_dir, dirs),'playable':False})
             elif _is_audio_file(dirs):
-                songs.append({'name':dirs, 'href':'/play/' + os.path.join(opt_dir, dirs), 'playable':True})
+                songs.append({'name':dirs, 'file_path':os.path.join(opt_dir, dirs), 'href':'/player/play', 'addhref':'/player/add','playable':True})
 
     folders.sort()
     songs.sort()

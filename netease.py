@@ -49,7 +49,7 @@ class search:
             res = self.search(keyword)
             for r in res:
                 show_title = '%s - %s' % (r['name'], r['artists'][0]['name'])
-                songs.append({'href':'/playurl/'+self._get_song_url(r['id']), 'name':show_title})
+                songs.append({'href':'/player/play', 'file_path':self._get_song_url(r['id']), 'name':show_title})
                 pass
         except:
             pass
