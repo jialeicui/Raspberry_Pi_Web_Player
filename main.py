@@ -2,11 +2,10 @@
 
 import web
 import song_scan
-import os
 import netease
 import player
 
-web.config.debug = False 
+# web.config.debug = False 
 render = web.template.render('templates/')
 base_dir = '/Users/jialeicui/Music'
 mplayer_sub = None

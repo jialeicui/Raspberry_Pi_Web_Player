@@ -6,6 +6,7 @@ import player_core
 
 web.config.debug = False 
 player_core = player_core.player()
+render = web.template.render('templates/playlist')
 
 urls = (
     '/play', 'play',
@@ -15,7 +16,6 @@ urls = (
     '/show', 'show'
 )
 
-render = web.template.render('templates/netease')
 base_dir = '/Users/jialeicui/Music'
 
 class play:
@@ -30,13 +30,17 @@ class play:
 class modify:
     def POST(self):
         post = web.input()
-        source = ''
-        if post['position'] == 'local':
-            source = os.path.join(base_dir, post['path'])
-        elif post['position'] == 'remote':
-            source = 'http://' + post['path']
+        action = post['action']
+        if action == 'add':
+            source = ''
+            if post['position'] == 'local':
+                source = os.path.join(base_dir, post['path'])
+            elif post['position'] == 'remote':
+                source = 'http://' + post['path']
 
-        player_core.add(source)
+            player_core.add(source, post['title'])
+        elif action == 'remove':
+            player_core.remove(post['id'])
         return ''
 
 class control:
@@ -49,6 +53,6 @@ class control:
 
 class show:
     def GET(self):
-        return player_core.get_list()
+        return render.index(player_core.get_list())
 
 app_player = web.application(urls, locals())

@@ -17,7 +17,7 @@ class player(object):
     def _player_thread(self):
         while True:
             if self.playlist:
-                self._play(self.playlist.pop(0))
+                self._play(self.playlist.pop(0)['source'])
         pass
 
     def _start(self):
@@ -38,20 +38,20 @@ class player(object):
         pass
 
     def play(self, source):
-        self.playlist.insert(0, source)
+        self.playlist.insert(0, {'source':source})
         self.next()
         pass
 
-    def add(self, source):
-        self.playlist.append(source)
+    def add(self, source, title):
+        self.playlist.append({'source':source, 'title':title, 'id':len(self.playlist)})
         pass
 
     def next(self):
         self.handle.stdin.write('q')
 
-    def remove(self, id):
-        if id < len(self.playlist):
-            self.playlist.pop(id)
+    def remove(self, list_id):
+        if list_id < len(self.playlist):
+            self.playlist.pop(list_id)
             pass
         pass
 

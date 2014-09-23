@@ -32,16 +32,20 @@ $def with (result)
       $for col in result:
         <div class="btn-group">
         <button type="button" class="btn btn-info" onclick="javascript:play('$col['href']', '$col['file_path']')">$col['name']</button>
-        <button type="button" class="btn btn-default btn-danger btn_add">&nbsp;<span class="glyphicon glyphicon-plus"></span>&nbsp;</button>
+        <button type="button" class="btn btn-default btn-danger btn_add" onclick="javascript:add('$col['addhref']', '$col['file_path']', '$col['name']')">&nbsp;<span class="glyphicon glyphicon-plus"></span>&nbsp;</button>
         </div>
     </div>
   </div>
 </body>
 
 <script type="text/javascript">
-function play(href, file_path)
+  function play(href, path)
   {
-    jQuery.post( href, {'position':'remote', 'path': file_path});
+    jQuery.post( href, {'position':'remote', 'path': path});
+  }
+  function add(href, path, title)
+  {
+    jQuery.post( href, {'position':'remote', 'path': path, 'title': title, 'action':'add'});
   }
 </script>
 </html>
