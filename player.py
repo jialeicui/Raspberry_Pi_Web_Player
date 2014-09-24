@@ -40,7 +40,7 @@ class modify:
 
             player_core.add(source, post['title'])
         elif action == 'remove':
-            player_core.remove(post['id'])
+            return player_core.remove(int(post['id']))
         return ''
 
 class control:
@@ -53,6 +53,10 @@ class control:
 
 class show:
     def GET(self):
-        return render.index(player_core.get_list())
+        plist = player_core.get_list()
+        for x in xrange(0, len(plist)):
+            plist[x]['id'] = x
+            pass
+        return render.index(plist)
 
 app_player = web.application(urls, locals())

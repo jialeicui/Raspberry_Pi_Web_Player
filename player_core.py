@@ -1,3 +1,5 @@
+# -*- coding:utf8 -*-
+
 import time
 import threading
 import subprocess
@@ -43,7 +45,7 @@ class player(object):
         pass
 
     def add(self, source, title):
-        self.playlist.append({'source':source, 'title':title, 'id':len(self.playlist)})
+        self.playlist.append({'source':source, 'title':title})
         pass
 
     def next(self):

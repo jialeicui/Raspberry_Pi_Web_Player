@@ -10,7 +10,7 @@ $def with (ll)
 <body>
   <nav class="navbar navbar-player">
     <ul class="nav navbar-nav nav-pills">
-      <li class="active" role="presentation"><a href="/">歌曲</a></li>
+      <li class="active" role="presentation"><a href="/">本地歌曲</a></li>
       <li><a href="/net">网易云音乐</a></li>
       <li><a href="/player/show">播放列表</a></li>
     </ul>
@@ -29,7 +29,7 @@ $def with (ll)
         $else:
           <div class="btn-group">
             <button type="button" class="btn btn-default" onclick="window.location.href='$col['href']';">$col['name']</button>
-            <button type="button" class="btn btn-default btn-danger btn_add">&nbsp;<span class="glyphicon glyphicon-plus"></span>&nbsp;</button>
+            <button type="button" class="btn btn-default btn-danger btn_add" disabled="disabled">&nbsp;<span class="glyphicon glyphicon-plus"></span>&nbsp;</button>
           </div>
     <!-- </div> -->
     </div>

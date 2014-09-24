@@ -10,7 +10,7 @@ $def with (result)
 <body>
   <nav class="navbar navbar-player">
     <ul class="nav navbar-nav nav-pills">
-      <li><a href="/">歌曲</a></li>
+      <li><a href="/">本地歌曲</a></li>
       <li><a href="/net">网易云音乐</a></li>
       <li class="active"><a href="#">播放列表</a></li>
     </ul>
@@ -22,7 +22,7 @@ $def with (result)
       $for col in result:
         <div class="btn-group">
         <button type="button" class="btn btn-info" onclick="javascript:play()">$col['title']</button>
-        <button type="button" class="btn btn-default btn-danger btn_add" onclick="javascript:jialeicui('/player/remove',$col['id'])">&nbsp;<span class="glyphicon glyphicon-remove"></span>&nbsp;</button>
+        <button type="button" class="btn btn-default btn-danger btn_add" onclick="javascript:remove_by_id('/player/remove',$col['id'])">&nbsp;<span class="glyphicon glyphicon-remove"></span>&nbsp;</button>
         </div>
     </div>
   </div>
@@ -33,9 +33,11 @@ $def with (result)
   {
     jQuery.post( href, {'position':'remote', 'path': file_path});
   }
-  function jialeicui(href, id)
+  function remove_by_id(href, id)
   {
-    jQuery.post( href, {'position':'remote', 'id': id, 'action':'remove'});
+    jQuery.post( href, {'position':'remote', 'id': id, 'action':'remove'}, function(result){
+      location.reload(true);
+    });
   }
 </script>
 </html>
