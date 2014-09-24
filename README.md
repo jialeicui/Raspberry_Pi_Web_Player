@@ -18,3 +18,9 @@ Raspberry_Pi_Web_Player
 - [ ] 文件列表区分是否可播放
 - [ ] 文件较多时的导航
 - [ ] 播放列表
+
+===
+
+![image](https://github.com/jialeicui/Raspberry_Pi_Web_Player/blob/master/static/images/local.png)
+![image](https://github.com/jialeicui/Raspberry_Pi_Web_Player/blob/master/static/images/netease.png)
+![image](https://github.com/jialeicui/Raspberry_Pi_Web_Player/blob/master/static/images/playlist.png)
