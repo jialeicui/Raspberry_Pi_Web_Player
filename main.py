@@ -3,6 +3,7 @@
 import web
 import song_scan
 import netease
+import douban_fm
 import player
 
 # web.config.debug = False 
@@ -15,6 +16,7 @@ urls = (
     '/ls/(.*)', 'index',
     '/player', player.app_player,
     '/net', netease.app_netease,
+    '/douban', douban_fm.app_douban,
 )
 
 class index:

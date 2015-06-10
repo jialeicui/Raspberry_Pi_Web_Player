@@ -1,7 +1,6 @@
 # -*- coding:utf8 -*-
 
-import urllib2
-import urllib
+import http_method
 import json
 import web
 
@@ -14,28 +13,6 @@ render = web.template.render('templates/netease')
 
 header = {'Host':'music.163.com', 
           'Referer':'http://music.163.com/'}
-
-def post(url, data):
-    request = urllib2.Request(url)
-    for k,v in header.items():
-        request.add_header(k, v)
-
-    f = urllib2.urlopen(
-        request,
-        data = urllib.urlencode(data))
-
-    return f.read()
-    pass
-
-def get(url):
-    request = urllib2.Request(url)
-    for k,v in header.items():
-        request.add_header(k, v)
-
-    f = urllib2.urlopen(request)
-
-    return f.read()
-    pass
 
 class index:
     def GET(self, opt_dir = ''):
@@ -65,11 +42,11 @@ class search:
         data = {'s': name,
                 'limit':8}
 
-        return self._get_results(post(url, data))
+        return self._get_results(http_method.post(url, data, header))
         pass
     def _get_song_url(self, id):
         url = 'http://music.163.com/api/song/detail?ids=[%d]' % id
-        context = get(url)
+        context = http_method.get(url, header)
         p = json.loads(context)['songs'][0]['mp3Url']
         return p[len('http://'):]
         pass

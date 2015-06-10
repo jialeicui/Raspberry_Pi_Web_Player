@@ -4,7 +4,7 @@ import os
 import web
 import player_core
 
-web.config.debug = False 
+# web.config.debug = False 
 player_core = player_core.player()
 render = web.template.render('templates/playlist')
 
